@@ -1,7 +1,12 @@
 defmodule Antz.PricingRules do
-  defmodule BuyOneGetOneFree do
-    def apply(product_order) do
-      ((product_order.count - div(product_order.count, 2)) |> round()) * product_order.price
+  defmodule BuyGetFree do
+    defstruct [:get, :free]
+
+    def apply(product_order, rule) do
+      div_by = rule.get + rule.free
+
+      ((product_order.quantity - div(product_order.quantity, div_by)) |> round()) *
+        product_order.unit_price
     end
   end
 
@@ -9,8 +14,8 @@ defmodule Antz.PricingRules do
     defstruct [:min_quantity, :discounted_price]
 
     def apply(product_order, rule) do
-      if product_order.count >= rule.min_quantity do
-        product_order.count * rule.discounted_price
+      if product_order.quantity >= rule.min_quantity do
+        product_order.quantity * rule.discounted_price
       else
         product_order.total
       end
@@ -21,8 +26,8 @@ defmodule Antz.PricingRules do
     defstruct [:min_quantity, :discount_percentage]
 
     def apply(product_order, rule) do
-      if product_order.count >= rule.min_quantity do
-        product_order.price * rule.discount_percentage * product_order.count
+      if product_order.quantity >= rule.min_quantity do
+        product_order.unit_price * rule.discount_percentage * product_order.quantity
       else
         product_order.total
       end
