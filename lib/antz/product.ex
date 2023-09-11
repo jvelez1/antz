@@ -19,6 +19,12 @@ defmodule Antz.Product do
     end
   end
 
+  @spec list_products(String.t()) :: t() | nil
+  def find_by_code(code) do
+    list_products()
+    |> Enum.find(fn p -> String.upcase(p.code) == String.upcase(code) end)
+  end
+
   defp build_products(raw_products) do
     raw_products
     |> Enum.map(fn product -> build_product(product) end)

@@ -16,4 +16,20 @@ defmodule Antz.ProductTest do
     assert Product.list_products("data/invalid_products.json") ==
              {:error, :error_parsing_products}
   end
+
+  describe "find_by_code" do
+    test "return valid product" do
+      product = Product.find_by_code("SR1")
+      assert product.code == "SR1"
+    end
+
+    test "return valid product with upcase" do
+      product = Product.find_by_code("sr1")
+      assert product.code == "SR1"
+    end
+
+    test "return nil when not found upcase" do
+      assert Product.find_by_code("jojo") == nil
+    end
+  end
 end
