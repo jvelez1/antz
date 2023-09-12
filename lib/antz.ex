@@ -2,7 +2,9 @@ defmodule Antz do
   @moduledoc """
   A module for managing product orders in a simple command-line interface (CLI).
 
-  The `Antz` module provides a basic command-line interface for creating and managing product orders. Users can add products to an order, view available products, and proceed to checkout. The CLI displays product details, order summaries, and total prices.
+  The `Antz` module provides a basic command-line interface for creating and managing product orders.
+  Users can add products to an order, view available products, and proceed to checkout.
+  The CLI displays product details, order summaries, and total prices.
   Remember to enter the product's code and the quantity (optional)
   """
 
