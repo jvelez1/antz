@@ -27,8 +27,8 @@ defmodule Antz.ProductOrder do
   def product_order_with_discount(product_order, new_total) do
     %__MODULE__{
       product_order
-      | discount: Float.ceil(product_order.sub_total - new_total, 2),
-        total: new_total
+      | discount: (product_order.sub_total - new_total) |> round_value(),
+        total: new_total |> round_value()
     }
   end
 
@@ -48,4 +48,8 @@ defmodule Antz.ProductOrder do
   end
 
   defp apply_discount(product_order, _), do: product_order
+
+  defp round_value(value) do
+    value |> Decimal.from_float() |> Decimal.round(2) |> Decimal.to_float()
+  end
 end
