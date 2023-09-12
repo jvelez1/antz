@@ -97,13 +97,13 @@ defmodule Antz do
     IO.puts(label)
 
     IO.puts(
-      "#{format_c("code")}#{format_c("price")}#{format_c("count")}#{format_c("subtotal")}#{format_c("total")}"
+      "#{format_c("code")}#{format_c("price")}#{format_c("count")}#{format_c("subtotal")}#{format_c("discount")}#{format_c("total")}"
     )
 
     order.product_orders
     |> Enum.each(fn p_order ->
       IO.puts(
-        "#{format_c(p_order.product_code)}#{format_c(p_order.unit_price)}#{format_c(p_order.quantity)}#{format_c(p_order.sub_total)}#{format_c(p_order.total)}"
+        "#{format_c(p_order.product_code)}#{format_c(p_order.unit_price)}#{format_c(p_order.quantity)}#{format_c(p_order.sub_total)}#{format_c(p_order.discount)}#{format_c(p_order.total)}"
       )
     end)
   end
