@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+docker build -t antz .
+
+docker run --rm -i -t antz /bin/sh -c './antz'

@@ -8,13 +8,13 @@ defmodule Antz do
   - Add products to the Order.
   - Process the order.
 
-  To use it, please run in your terminal: mix run -e "Antz.start()"
+  Remember to enter the product's code and the quantity (optional)
   """
 
   alias Antz.Order
   alias Antz.Product
 
-  def start do
+  def main(_args) do
     print_header()
     loop(Order.new())
   end
@@ -80,6 +80,8 @@ defmodule Antz do
         loop(order)
 
       product ->
+        quantity = quantity || 1
+
         Order.add_product(order, product, quantity)
         |> loop()
     end
