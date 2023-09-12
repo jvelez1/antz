@@ -1,4 +1,16 @@
 defmodule Antz.Order do
+  @moduledoc """
+  A module for managing orders of products.
+  The `Antz.Order` module provides functionality for creating and managing orders that consist of various products.
+  It allows adding products to an order, calculating the total price, and updating product quantities within the order.
+
+  Struct Definition
+  The Antz.Order module defines an order as a struct with the following fields:
+
+  product_orders: A list of product orders, where each product order represents a product and its quantity.
+  total: The total price of the order.
+  """
+
   alias Antz.Product
   alias Antz.ProductOrder
 

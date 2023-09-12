@@ -1,4 +1,22 @@
 defmodule Antz.ProductOrder do
+  @moduledoc """
+  A module for representing product orders and applying pricing discounts.
+
+  The `Antz.ProductOrder` module defines a struct for product orders,
+  including information such as the product code, unit price, quantity, sub-total, and total price.
+  It also provides functionality to apply pricing discounts to product orders based on various pricing rules.
+
+  ## Struct Definition
+
+  A product order is represented as a struct with the following fields:
+  - `product_code`: The code of the product being ordered.
+  - `unit_price`: The unit price of the product.
+  - `quantity`: The quantity of the product being ordered.
+  - `sub_total`: The sub-total price before applying discounts.
+  - `discount`: The discount amount applied to the sub-total.
+  - `total`: The total price after applying discounts.
+  """
+
   @type t() :: %__MODULE__{
           product_code: String.t(),
           unit_price: float(),

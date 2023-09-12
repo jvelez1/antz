@@ -1,4 +1,18 @@
 defmodule Antz.Product do
+  @moduledoc """
+  A module for managing products and their pricing rules.
+
+  The `Antz.Product` module defines a struct for representing products, including fields such as product code, name, price, and pricing rules. It also provides functions for listing products, finding products by code, and parsing product data from a JSON file.
+
+  ## Struct Definition
+
+  A product is represented as a struct with the following fields:
+  - `code`: The unique code or identifier for the product.
+  - `name`: The name of the product.
+  - `price`: The unit price of the product.
+  - `rule`: The pricing rule associated with the product, which can be one of `BuyGetFree`, `BulkDiscount`, or `PercentageDiscount`.
+  """
+
   alias Antz.PricingRules
   alias Antz.PricingRules.{BuyGetFree, BulkDiscount, PercentageDiscount}
 
