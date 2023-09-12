@@ -33,4 +33,35 @@ defmodule Antz.PricingRules do
       end
     end
   end
+
+  alias Antz.PricingRules.{BuyGetFree, BulkDiscount, PercentageDiscount}
+
+  def parse("BuyGetFree", %{"get" => get, "free" => free}) do
+    %BuyGetFree{
+      get: get,
+      free: free
+    }
+  end
+
+  def parse("BulkDiscount", %{
+        "discounted_price" => discounted_price,
+        "min_quantity" => min_quantity
+      }) do
+    %BulkDiscount{
+      discounted_price: discounted_price,
+      min_quantity: min_quantity
+    }
+  end
+
+  def parse("PercentageDiscount", %{
+        "discount_percentage" => discount_percentage,
+        "min_quantity" => min_quantity
+      }) do
+    %PercentageDiscount{
+      discount_percentage: discount_percentage,
+      min_quantity: min_quantity
+    }
+  end
+
+  def parse(_, _), do: %{}
 end

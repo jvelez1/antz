@@ -2,16 +2,37 @@
   {
     "code": "GR1",
     "name": "Green Tea",
-    "price": 3.11
+    "price": 3.11,
+    "rule": {
+      "key": "BuyGetFree",
+      "params": {
+        "get": 1,
+        "free": 1
+      }
+    }
   },
   {
     "code": "SR1",
     "name": "Strawberries",
-    "price": 5.00
+    "price": 5.00,
+    "rule": {
+      "key": "BulkDiscount",
+      "params": {
+        "min_quantity": 3,
+        "discounted_price": 4.5
+      }
+    }
   },
   {
     "code": "CF1",
     "name": "Coffee",
-    "price": 11.23
+    "price": 11.23,
+    "rule": {
+      "key": "PercentageDiscount",
+      "params": {
+        "min_quantity": 3,
+        "discount_percentage": 0.666667
+      }
+    }
   }
 ]

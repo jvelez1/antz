@@ -1,11 +1,18 @@
 defmodule Antz.ProductTest do
   alias Antz.Product
+  alias Antz.PricingRules.BuyGetFree
 
   use ExUnit.Case
 
   test "returns products without path input" do
     products = Product.list_products()
     assert products |> Enum.count() == 3
+  end
+
+  test "returns products with rule definition" do
+    product = Product.list_products() |> hd()
+    assert product.rule
+    assert product.rule == %BuyGetFree{get: 1, free: 1}
   end
 
   test "returns error when invalid path" do
